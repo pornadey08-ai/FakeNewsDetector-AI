@@ -5,55 +5,10 @@ function saveUsers() {
     localStorage.setItem('standalone_users', JSON.stringify(users));
 }
 
-// ========== CREATE ANIMATED PARTICLES ==========
-function createParticles() {
-    const particlesContainer = document.getElementById('particles');
-    if (!particlesContainer) return;
-    
-    for (let i = 0; i < 50; i++) {
-        const particle = document.createElement('div');
-        particle.classList.add('particle');
-        particle.style.width = `${Math.random() * 5 + 2}px`;
-        particle.style.height = particle.style.width;
-        particle.style.left = `${Math.random() * 100}%`;
-        particle.style.animationDuration = `${Math.random() * 10 + 5}s`;
-        particle.style.animationDelay = `${Math.random() * 5}s`;
-        particlesContainer.appendChild(particle);
-    }
-}
-
-// ========== ROBOT INTERACTIONS ==========
-function initRobot() {
-    const robotContainer = document.querySelector('.robot-container');
-    const robotBubble = document.getElementById('robotBubble');
-    const robotScreen = document.getElementById('robotScreen');
-    if (!robotContainer) return;
-    
-    const messages = ["🤖 Hello! I detect fake news!", "🔍 Paste any news to verify!", "⚡ AI + Blockchain = Truth!", "📊 98% accuracy guaranteed!", "🎓 City University Malaysia!"];
-    let messageIndex = 0;
-    
-    setInterval(() => {
-        if (robotBubble) {
-            robotBubble.textContent = messages[messageIndex % messages.length];
-            messageIndex++;
-        }
-        if (robotScreen) {
-            const icons = ['🔍', '🤖', '⚡', '🔒', '📊'];
-            robotScreen.textContent = icons[messageIndex % icons.length];
-        }
-    }, 5000);
-    
-    robotContainer.addEventListener('click', () => {
-        robotBubble.textContent = "👋 Thanks for clicking!";
-        setTimeout(() => robotBubble.textContent = messages[0], 2000);
-    });
-}
-
-// ========== FAKE NEWS DETECTION (NO API!) ==========
+// ========== FAKE NEWS DETECTION (NO API NEEDED!) ==========
 function detectFakeNews(text) {
     const lowerText = text.toLowerCase();
     
-    // Fake news keywords
     const fakeKeywords = [
         'shocking', 'miracle', 'cure', 'secret', 'hidden', 'exposed', 
         'truth', 'conspiracy', 'doctors hate', 'pharma', 'you won\'t believe',
@@ -61,7 +16,6 @@ function detectFakeNews(text) {
         'instant', 'free', 'limited time', 'viral', 'clickbait'
     ];
     
-    // Real news keywords
     const realKeywords = [
         'federal reserve', 'president signed', 'stock market', 'white house', 
         'congress', 'official statement', 'government announced', 'unemployment',
@@ -79,7 +33,6 @@ function detectFakeNews(text) {
         if (lowerText.includes(keyword)) realScore++;
     }
     
-    // Calculate confidence
     let confidence;
     let prediction;
     
@@ -89,9 +42,6 @@ function detectFakeNews(text) {
     } else if (realScore > fakeScore && realScore > 0) {
         prediction = 'REAL';
         confidence = Math.min(95, 60 + realScore * 10);
-    } else if (fakeScore > 0 && realScore > 0 && fakeScore === realScore) {
-        prediction = 'SUSPICIOUS';
-        confidence = 70;
     } else {
         prediction = 'SUSPICIOUS';
         confidence = 60;
@@ -101,31 +51,29 @@ function detectFakeNews(text) {
 }
 
 // ========== LOGIN PAGE LOGIC ==========
-if (window.location.pathname.includes('index.html') || window.location.pathname === '/' || window.location.pathname.endsWith('/FakeNewsStandalone/')) {
-    setTimeout(() => {
-        createParticles();
-        initRobot();
-    }, 100);
+if (window.location.pathname.includes('index.html') || window.location.pathname === '/' || window.location.pathname.endsWith('/')) {
     
     const tabs = document.querySelectorAll('.tab-btn-modern');
     const loginForm = document.getElementById('login-form');
     const signupForm = document.getElementById('signup-form');
     
-    tabs.forEach(tab => {
-        tab.addEventListener('click', () => {
-            tabs.forEach(t => t.classList.remove('active'));
-            tab.classList.add('active');
-            if (tab.dataset.tab === 'login') {
-                loginForm.classList.add('active');
-                signupForm.classList.remove('active');
-            } else {
-                signupForm.classList.add('active');
-                loginForm.classList.remove('active');
-            }
+    if (tabs.length) {
+        tabs.forEach(tab => {
+            tab.addEventListener('click', () => {
+                tabs.forEach(t => t.classList.remove('active'));
+                tab.classList.add('active');
+                if (tab.dataset.tab === 'login') {
+                    loginForm.classList.add('active');
+                    signupForm.classList.remove('active');
+                } else {
+                    signupForm.classList.add('active');
+                    loginForm.classList.remove('active');
+                }
+            });
         });
-    });
+    }
     
-    document.getElementById('login-btn').addEventListener('click', () => {
+    document.getElementById('login-btn')?.addEventListener('click', () => {
         const email = document.getElementById('login-email').value.trim();
         const password = document.getElementById('login-password').value;
         
@@ -138,7 +86,7 @@ if (window.location.pathname.includes('index.html') || window.location.pathname 
         }
     });
     
-    document.getElementById('signup-btn').addEventListener('click', () => {
+    document.getElementById('signup-btn')?.addEventListener('click', () => {
         const name = document.getElementById('signup-name').value.trim();
         const email = document.getElementById('signup-email').value.trim();
         const password = document.getElementById('signup-password').value;
@@ -307,7 +255,6 @@ if (window.location.pathname.includes('dashboard.html')) {
         blockchainDiv.style.display = 'none';
         actionButtons.style.display = 'none';
         
-        // Detect using built-in logic (NO API!)
         const result = detectFakeNews(newsText);
         const confidence = result.confidence;
         const prediction = result.prediction;
