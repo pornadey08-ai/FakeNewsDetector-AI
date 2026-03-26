@@ -9,7 +9,6 @@
 </head>
 <body>
     <div class="dashboard">
-        <!-- Sidebar -->
         <aside class="dashboard-sidebar">
             <div class="sidebar-logo">
                 <div class="logo-icon">🔍</div>
@@ -53,13 +52,11 @@
             </div>
         </aside>
 
-        <!-- Main Content -->
         <main class="dashboard-main">
-            <!-- Detector Page -->
             <div id="detectorPage" class="page-content active">
                 <div class="page-header">
                     <h1>🔍 News Detector</h1>
-                    <p>Paste any news article below and let AI verify it</p>
+                    <p>Paste any news article below to check if it's fake or real</p>
                     <div class="stats-badge">
                         <span>⚡ 98% Accuracy</span>
                         <span>⛓️ Blockchain Secured</span>
@@ -68,10 +65,6 @@
                 </div>
 
                 <div class="input-card">
-                    <div class="url-input-group">
-                        <input type="text" id="newsLink" placeholder="Or paste a news article URL...">
-                        <button id="checkLinkBtn" class="btn-outline">Fetch</button>
-                    </div>
                     <textarea id="newsInput" rows="6" placeholder="Paste news article here..."></textarea>
                     <div class="input-stats">
                         <span id="wordCount">📝 0 words</span>
@@ -90,7 +83,6 @@
                 </div>
             </div>
 
-            <!-- History Page -->
             <div id="historyPage" class="page-content">
                 <div class="page-header">
                     <h1>📜 Verification History</h1>
@@ -99,7 +91,6 @@
                 <div id="historyList" class="history-list"></div>
             </div>
 
-            <!-- Statistics Page -->
             <div id="statsPage" class="page-content">
                 <div class="page-header">
                     <h1>📊 Your Statistics</h1>
@@ -129,7 +120,6 @@
                 </div>
             </div>
 
-            <!-- Settings Page -->
             <div id="settingsPage" class="page-content">
                 <div class="page-header">
                     <h1>⚙️ Settings</h1>
