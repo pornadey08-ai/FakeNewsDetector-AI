@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fake News Detector | City University</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Animated Background Particles -->
+    <div class="particles" id="particles"></div>
+    
+    <!-- Robot Character -->
+    <div class="robot-container">
+        <div class="robot">
+            <div class="robot-head">
+                <div class="robot-face">
+                    <div class="robot-eye left-eye"></div>
+                    <div class="robot-eye right-eye"></div>
+                    <div class="robot-mouth"></div>
+                </div>
+                <div class="robot-antenna"></div>
+            </div>
+            <div class="robot-body">
+                <div class="robot-screen" id="robotScreen">🔍</div>
+                <div class="robot-button"></div>
+            </div>
+            <div class="robot-arm left-arm"></div>
+            <div class="robot-arm right-arm"></div>
+            <div class="robot-legs">
+                <div class="robot-leg"></div>
+                <div class="robot-leg"></div>
+            </div>
+        </div>
+        <div class="robot-bubble" id="robotBubble">I detect fake news! 🤖</div>
+    </div>
+
+    <div class="hero-section">
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <div class="hero-badge">🏆 City University Malaysia | FusionX Hackathon 2026</div>
+            <h1 class="hero-title">
+                <span class="glow-text">Fake News</span>
+                <span class="gradient-text">Detector</span>
+            </h1>
+            <p class="hero-subtitle">AI-Powered | Blockchain Verified | 98% Accuracy</p>
+        </div>
+    </div>
+
+    <div class="login-section-wrapper">
+        <div class="login-card-modern">
+            <div class="login-header">
+                <div class="login-tabs-modern">
+                    <button class="tab-btn-modern active" data-tab="login">🔐 Login</button>
+                    <button class="tab-btn-modern" data-tab="signup">✨ Sign Up</button>
+                </div>
+            </div>
+
+            <div id="login-form" class="auth-form active">
+                <div class="input-group">
+                    <label>Email Address</label>
+                    <input type="email" id="login-email" placeholder="student@city.edu.my">
+                    <span class="input-icon">📧</span>
+                </div>
+                <div class="input-group">
+                    <label>Password</label>
+                    <input type="password" id="login-password" placeholder="••••••••">
+                    <span class="input-icon">🔒</span>
+                </div>
+                <button class="auth-btn" id="login-btn">Login Now</button>
+                <p class="demo-hint">Demo: any@email.com | any password</p>
+            </div>
+
+            <div id="signup-form" class="auth-form">
+                <div class="input-group">
+                    <label>Full Name</label>
+                    <input type="text" id="signup-name" placeholder="John Doe">
+                    <span class="input-icon">👤</span>
+                </div>
+                <div class="input-group">
+                    <label>Email Address</label>
+                    <input type="email" id="signup-email" placeholder="student@city.edu.my">
+                    <span class="input-icon">📧</span>
+                </div>
+                <div class="input-group">
+                    <label>Password</label>
+                    <input type="password" id="signup-password" placeholder="Create a strong password">
+                    <span class="input-icon">🔒</span>
+                </div>
+                <div class="input-group">
+                    <label>Confirm Password</label>
+                    <input type="password" id="signup-confirm" placeholder="Confirm your password">
+                    <span class="input-icon">✓</span>
+                </div>
+                <button class="auth-btn" id="signup-btn">Create Account</button>
+            </div>
+
+            <div class="login-footer">
+                <p>© 2026 City University Malaysia | AI + Blockchain Project</p>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

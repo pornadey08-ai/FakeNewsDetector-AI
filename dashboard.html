@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard | Fake News Detector</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="dashboard">
+        <!-- Sidebar -->
+        <aside class="dashboard-sidebar">
+            <div class="sidebar-logo">
+                <div class="logo-icon">🔍</div>
+                <div class="logo-text">
+                    <h2>Fake News</h2>
+                    <span>Detector</span>
+                </div>
+            </div>
+            <div class="sidebar-user">
+                <div class="user-avatar" id="userAvatar">👤</div>
+                <div class="user-details">
+                    <h4 id="userNameDisplay">User</h4>
+                    <p id="userEmailDisplay">student@city.edu.my</p>
+                </div>
+            </div>
+            <nav class="sidebar-nav">
+                <a href="#" class="nav-link active" data-page="detector">
+                    <span class="nav-icon">🔍</span>
+                    <span>Detector</span>
+                </a>
+                <a href="#" class="nav-link" data-page="history">
+                    <span class="nav-icon">📜</span>
+                    <span>History</span>
+                </a>
+                <a href="#" class="nav-link" data-page="stats">
+                    <span class="nav-icon">📊</span>
+                    <span>Statistics</span>
+                </a>
+                <a href="#" class="nav-link" data-page="settings">
+                    <span class="nav-icon">⚙️</span>
+                    <span>Settings</span>
+                </a>
+            </nav>
+            <div class="sidebar-footer">
+                <button id="clearHistoryBtn" class="sidebar-btn danger">🗑️ Clear History</button>
+                <button id="logoutBtn" class="sidebar-btn">🚪 Logout</button>
+                <div class="university-credit">
+                    <p>🏆 City University Malaysia</p>
+                    <p>FusionX Hackathon 2026</p>
+                </div>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="dashboard-main">
+            <!-- Detector Page -->
+            <div id="detectorPage" class="page-content active">
+                <div class="page-header">
+                    <h1>🔍 News Detector</h1>
+                    <p>Paste any news article below and let AI verify it</p>
+                    <div class="stats-badge">
+                        <span>⚡ 98% Accuracy</span>
+                        <span>⛓️ Blockchain Secured</span>
+                        <span>🤖 AI Powered</span>
+                    </div>
+                </div>
+
+                <div class="input-card">
+                    <div class="url-input-group">
+                        <input type="text" id="newsLink" placeholder="Or paste a news article URL...">
+                        <button id="checkLinkBtn" class="btn-outline">Fetch</button>
+                    </div>
+                    <textarea id="newsInput" rows="6" placeholder="Paste news article here..."></textarea>
+                    <div class="input-stats">
+                        <span id="wordCount">📝 0 words</span>
+                        <span id="readingTime">⏱️ 0 min read</span>
+                    </div>
+                    <button id="checkButton" class="btn-primary">🔍 Verify News</button>
+                </div>
+
+                <div id="result" class="result-card" style="display: none;"></div>
+                <div id="sourceCheck" class="source-card" style="display: none;"></div>
+                <div id="blockchainProof" class="blockchain-card" style="display: none;"></div>
+                
+                <div id="actionButtons" class="action-buttons" style="display: none;">
+                    <button id="shareBtn" class="btn-secondary">📤 Share</button>
+                    <button id="downloadBtn" class="btn-secondary">📥 Download Report</button>
+                </div>
+            </div>
+
+            <!-- History Page -->
+            <div id="historyPage" class="page-content">
+                <div class="page-header">
+                    <h1>📜 Verification History</h1>
+                    <p>Your past news verifications</p>
+                </div>
+                <div id="historyList" class="history-list"></div>
+            </div>
+
+            <!-- Statistics Page -->
+            <div id="statsPage" class="page-content">
+                <div class="page-header">
+                    <h1>📊 Your Statistics</h1>
+                    <p>Track your verification activity</p>
+                </div>
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-icon">📰</div>
+                        <div class="stat-number" id="totalChecks">0</div>
+                        <div class="stat-label">Total Checks</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon">🔴</div>
+                        <div class="stat-number" id="fakeCount">0</div>
+                        <div class="stat-label">Fake News Found</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon">🟢</div>
+                        <div class="stat-number" id="realCount">0</div>
+                        <div class="stat-label">Real News Found</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon">🎯</div>
+                        <div class="stat-number">98%</div>
+                        <div class="stat-label">AI Accuracy</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Settings Page -->
+            <div id="settingsPage" class="page-content">
+                <div class="page-header">
+                    <h1>⚙️ Settings</h1>
+                    <p>Customize your experience</p>
+                </div>
+                <div class="settings-card">
+                    <div class="setting-row">
+                        <div>
+                            <h4>Dark Mode</h4>
+                            <p>Toggle between light and dark theme</p>
+                        </div>
+                        <button id="themeBtn" class="toggle-btn">🌙 Dark Mode</button>
+                    </div>
+                    <div class="setting-row">
+                        <div>
+                            <h4>Auto-Save History</h4>
+                            <p>Your verifications are automatically saved</p>
+                        </div>
+                        <span class="badge-success">Enabled</span>
+                    </div>
+                    <div class="setting-row">
+                        <div>
+                            <h4>Export Data</h4>
+                            <p>Download all your verification history</p>
+                        </div>
+                        <button id="exportDataBtn" class="btn-outline-sm">Export JSON</button>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
