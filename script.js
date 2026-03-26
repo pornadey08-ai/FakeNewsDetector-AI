@@ -311,7 +311,7 @@ if (window.location.pathname.includes('dashboard.html')) {
     }
     
     // API Connection
-    const API_URL = 'https://grovelingly-treelined-euclid.ngrok-free.dev';
+    const API_URL = 'https://grovelingly-treelined-euclid.ngrok-free.dev/predict';
     const newsInput = document.getElementById('newsInput');
     const checkButton = document.getElementById('checkButton');
     const resultDiv = document.getElementById('result');
